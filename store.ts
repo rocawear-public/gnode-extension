@@ -1,18 +1,20 @@
 import { zip } from "zip-a-folder"
 import fs from "fs-extra"
 import p from "./package.json"
-import e from "./store/extension.json"
+// import e from "./store/extension.json"
 
 async function main() {
   try {
-    await fs.copy("./dist", "./store")
+    await fs.copy("./store", "./dist")
     await createPackage()
-    await createExtension()
-    await zip("./store", "./zip/extension.zip")
+    // await createExtension()
+    await zip("./dist", "./store/extension.zip")
   } catch (err) {
     console.error(err)
   }
 }
+
+main()
 
 async function createPackage() {
   const { devDependencies, scripts, type, ...rest } = p
@@ -25,38 +27,35 @@ async function createPackage() {
       start: "node ./src/index.js",
     },
   }
-  await fs.writeFile("./store/package.json", JSON.stringify(filtered, null, 2))
+  await fs.writeFile("./dist/package.json", JSON.stringify(filtered, null, 2))
 }
 
-async function createExtension() {
-  const { title, description, authors, framework, ...rest } = e
-  const d = new Date()
-  const time = `${d.getDay()}-${d.getMonth()}-${d.getFullYear()} ${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}`
+// async function createExtension() {
+//   const { title, description, authors, framework, ...rest } = e
+//   // const d = new Date()
 
-  const filtered = {
-    title: p.name,
-    description: p.description,
-    ...rest,
-    authors: [
-      {
-        ...authors[0],
-        name: p.author,
-      },
-    ],
-    version: p.version,
-    framework: {
-      ...framework,
-      version: p.dependencies["gnode-api"].replace("^", ""),
-    },
-    source: {
-      source: p.source,
-      readme: p.readme,
-      releases: p.releases,
-    },
-    updateDate: time,
-  }
+//   const filtered = {
+//     title: p.name,
+//     description: p.description,
+//     ...rest,
+//     authors: [
+//       {
+//         ...authors[0],
+//         name: p.author,
+//       },
+//     ],
+//     version: p.version,
+//     framework: {
+//       ...framework,
+//       version: p.dependencies["gnode-api"].replace("^", ""),
+//     },
+//     source: {
+//       source: p.source,
+//       readme: p.readme,
+//       releases: p.releases,
+//     },
+//     // updateDate: time,
+//   }
 
-  await fs.writeFile("./store/extension.json", JSON.stringify(filtered, null, 2))
-}
-
-main()
+//   await fs.writeFile("./store/extension.json", JSON.stringify(filtered, null, 2))
+// }

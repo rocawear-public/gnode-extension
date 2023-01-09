@@ -9,8 +9,7 @@
     "build": "tsc",
     "lint": "eslint .",
     "store": "npm run build && tsx ./store.ts",
-    "start": "node ./dist/src/index.js",
-    "start:test": "node ./dist/src/index.js -p 9092"
+    "start": "node ./dist/src/index.js -p 9092"
   },
   "source": "",
   "readme": "",
