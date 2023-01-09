@@ -8,7 +8,7 @@ async function main() {
     await fs.copy("./dist", "./store")
     await createPackage()
     await createExtension()
-    await zip("./store", "./store/extension.zip")
+    await zip("./store", "./zip/extension.zip")
   } catch (err) {
     console.error(err)
   }
@@ -20,16 +20,12 @@ async function createPackage() {
   const filtered = {
     ...rest,
     type,
-    main: "index.js",
+    main: "./src/index.js",
     scripts: {
       start: "node ./src/index.js",
     },
   }
-  try {
-    await fs.writeFile("./store/package.json", JSON.stringify(filtered, null, 2))
-  } catch (err) {
-    console.error(err)
-  }
+  await fs.writeFile("./store/package.json", JSON.stringify(filtered, null, 2))
 }
 
 async function createExtension() {
@@ -60,11 +56,7 @@ async function createExtension() {
     updateDate: time,
   }
 
-  try {
-    await fs.writeFile("./store/extension.json", JSON.stringify(filtered, null, 2))
-  } catch (err) {
-    console.error(err)
-  }
+  await fs.writeFile("./store/extension.json", JSON.stringify(filtered, null, 2))
 }
 
 main()
