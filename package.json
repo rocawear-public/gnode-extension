@@ -1,0 +1,35 @@
+{
+  "name": "gnode-extension",
+  "version": "1.0.0",
+  "description": "example extension",
+  "main": "./dist/src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch ./src/index -p 9092",
+    "build": "tsc",
+    "lint": "eslint .",
+    "store": "npm run build && tsx ./store.ts",
+    "start": "node ./dist/src/index.js",
+    "start:test": "node ./dist/src/index.js -p 9092"
+  },
+  "source": "",
+  "readme": "",
+  "releases": "",
+  "keywords": [],
+  "author": "rocawear",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.0",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "eslint": "^8.31.0",
+    "fs-extra": "^11.1.0",
+    "prettier": "^2.8.2",
+    "tsx": "^3.12.2",
+    "zip-a-folder": "^1.1.5"
+  },
+  "dependencies": {
+    "gnode-api": "^0.2.12"
+  }
+}

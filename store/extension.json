@@ -1,0 +1,61 @@
+{
+  "title": "gnode-extension",
+  "description": "example extension",
+  "version": "1.0.0",
+  "categories": [
+    "Usability",
+    "Building"
+  ],
+  "source": {
+    "source": "",
+    "readme": "",
+    "releases": ""
+  },
+  "readme": "",
+  "releases": "",
+  "stable": true,
+  "language": "js",
+  "commands": {
+    "default": [
+      "java",
+      "-jar",
+      "NodeExtensionSetup.jar",
+      "-npm",
+      "start",
+      "-v",
+      "15.0.0",
+      "-c",
+      "{cookie}",
+      "-p",
+      "{port}",
+      "-f",
+      "{filename}"
+    ]
+  },
+  "compatibility": {
+    "systems": [
+      "Linux",
+      "Windows",
+      "Mac"
+    ],
+    "clients": [
+      "Flash"
+    ]
+  },
+  "submissionDate": "",
+  "updateDate": "2-0-2023 0-30-34",
+  "isOutdated": false,
+  "authors": [
+    {
+      "name": "rocawear",
+      "hotel": "",
+      "username": "",
+      "discord": "",
+      "twitter": ""
+    }
+  ],
+  "framework": {
+    "name": "G-Node",
+    "version": "0.2.12"
+  }
+}
